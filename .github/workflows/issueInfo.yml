@@ -1,0 +1,14 @@
+name: Issue Logger
+
+on: issues
+
+
+jobs:
+  log-issue:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Log issue info
+        run: |
+          echo "Issue Title: ${{ github.event.issue.title }}"
+          echo "Issue Body: ${{ github.event.issue.body }}"
+          echo "Opened by: ${{ github.actor }}"
