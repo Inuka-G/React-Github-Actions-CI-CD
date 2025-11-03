@@ -1,8 +1,7 @@
 name: Issue Logger
 
-on:
-  issues:
-    types: [opened]
+on: issues
+
 
 jobs:
   log-issue:
