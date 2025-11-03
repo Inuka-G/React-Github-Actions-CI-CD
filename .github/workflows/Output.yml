@@ -1,8 +1,15 @@
-name: Issue_output
-on: issues
+name: Issue Logger
+
+on:
+  issues:
+    types: [opened]
+
 jobs:
-  output:
+  log-issue:
     runs-on: ubuntu-latest
     steps:
-      - name: output_info
-        run: echo "${{ toJSON(github) }}"
+      - name: Log issue info
+        run: |
+          echo "Issue Title: ${{ github.event.issue.title }}"
+          echo "Issue Body: ${{ github.event.issue.body }}"
+          echo "Opened by: ${{ github.actor }}"
