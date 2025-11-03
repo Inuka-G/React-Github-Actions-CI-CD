@@ -1,0 +1,33 @@
+name: lint_test_deploy
+on: push
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Install dep
+        run: npm ci
+      - name: Linting
+        run: npm run lint
+  test:
+    runs-on: ubuntu-latest
+    needs: lint
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Install dep
+        run: npm ci
+      - name: Testing
+        run: npm run test
+  
+  deploy:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Install dep
+        run: npm ci
+      - name: Deploy
+        run: echo "DEploying"
